@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { useStore } from '@/stores/store'
 import { ElementTypes, Size } from "@/types";
 
-describe('The counter store', () => {
+describe('Testing the component store', () => {
     beforeEach(() => {
         setActivePinia(createPinia())
     })
