@@ -1,17 +1,22 @@
-# Notas sobre la implementación
-
-## Fase 1
+# Notas del desarrollador
 
 ## Fase 2
+    En la fase dos para poder cambiar el texto se ha añadido al componente texto un input dónde se puede cambiar el valor. Este input se teleporta a otro elemento dentro del App.vue (en estos momentos el lugar esta hardcodeado, se podría añadir un prop para cambiarlo).
+
+    Esto se ha hecho así para mantener la funcionalidad del cambio de color contenida dentro del TextComponent y no tenerla en App u otro lugar.
 
 ## Fase 3
+    Aquí el problema principal que me he encontrado, es que los elementos no tenían que estar focuseados para ser los activos. Lo que impedía, poder aplicarles eventos directamente, a no ser que les hiciera click y luego aplicará el evento sin hacer nada más (usando tabIndex). Y hacer que perdiera el foco cuando clickaba en otro lugar me daba problemas para modificar el color de texto. Por ello, estos eventos se controlan desde la App.vue, y siempre y cuando no se hagan contra un input.
 
 ## Fase 4 
-
-## Fase 5
+    En esta parte, al no saber si tenía que mostrar el color o el texto, he puesto ambas en el panel. Esté esta a la izquierda del canvas.
 
 ## Fase 6
+    En esta fase, en vez de crear un panel con el search, he preferido pasarlo a un popup por dos motivos. Dejar más espacio en la pantalla principal del canvas, y que sea más para el usuario el poder seleccionar las imágenes.
 
+    Cuando estas dentro del popup, y haces la búsqueda te saldrán imagenes. Si haces click a una imagen, esta se añadirá al canvas y se mostrará un alert para indicarlo.
+
+    El botón para abrirlo es Add Image Api.
 
 # Pikieditor
 
