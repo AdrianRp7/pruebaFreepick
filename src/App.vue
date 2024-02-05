@@ -75,7 +75,7 @@ onDeactivated(() => {
             />
           </div>
           <div>
-            <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Height</label>
+            <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Background Color</label>
             <input
                 v-model="canvasBackground"
                 type="text"

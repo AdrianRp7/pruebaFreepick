@@ -29,8 +29,9 @@ export const useStore = defineStore('store', () => {
         }
     }
 
-    const addElementImage = (imagenUrl) => {
-        canvas.value.elements.push(new Image(imagenUrl, {width: 200, height: 200}, {x: 100, y: 0}));
+    const addElementImage = (imagenUrl: string) => {
+        if(imagenUrl !== "")
+            canvas.value.elements.push(new Image(imagenUrl, {width: 200, height: 200}, {x: 100, y: 0}));
     };
 
     const setBackgroundColor = (backgroundColor: string) => {
@@ -69,6 +70,7 @@ export const useStore = defineStore('store', () => {
                 activeElement.value?.scale,
                 activeElement.value?.rotate
             );
+            
         if(activeElement?.value?.type === ElementTypes.Image) {
             clipBoardElement.value = new Image(activeElement.value.backgroundUrl, {width: activeElement.value?.size.width, height: activeElement.value?.size.height}, {x: 100, y: 0}, activeElement.value?.scale,
                 activeElement.value?.rotate)
@@ -92,5 +94,5 @@ export const useStore = defineStore('store', () => {
         }
     }
 
-    return { canvas, activeElement, setActive, addElement, setBackgroundColor, setSize, deleteActualItem, saveActualItem, cutActualElement, pushClipboardElement, modifyColorText, addElementImage}
+    return { canvas, activeElement,clipBoardElement, setActive, addElement, setBackgroundColor, setSize, deleteActualItem, saveActualItem, cutActualElement, pushClipboardElement, modifyColorText, addElementImage}
 })
