@@ -41,17 +41,10 @@ export const useTransformManager = () => {
 
         moveable.value.on("scale", ({scale}) => {
             store.activeElement.scale = `scale(${scale[0]}, ${scale[1]})`;
-            // store.activeElement.size.width = width;
-            // store.activeElement.size.height = height;
-            // e.target.style.transform = e.drag.transform
         });
 
         moveable.value.on("rotate", ({ rotation }) => {
             store.activeElement.rotate = `rotate(${rotation}deg)`;
-            // store.activeElement.scale = `scale(${scale[0]}, ${scale[1]})`;
-            // store.activeElement.size.width = width;
-            // store.activeElement.size.height = height;
-            // e.target.style.transform = e.drag.transform
         });
     }
 

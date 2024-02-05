@@ -1,6 +1,6 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-    <button class="p-2 rounded border border-blue-500" @click="activePopup = false">Add Image Api</button>
+    <button class="mo-ButtonOpenApi p-2 rounded border border-blue-500" @click="activePopup = false">Add Image Api</button>
     <Popup :hidden="activePopup" @update="activePopup = $event">
         <div class="max-w-md mx-auto bg-white p-6 rounded-md">
             <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Term to search</label>
@@ -66,14 +66,12 @@ function getImages() {
         })
         .then((data) => {
             showLoader.value = false;
-            // Hacer algo con los datos obtenidos
             results.value = results.value.concat(data.data);
             nextLink.value = data.links.next;
             metaFecth.value = data.meta;
         })
         .catch((error) => {
             showLoader.value = false;
-            // Capturar y manejar errores
             console.error("Fetch error:", error);
         });
 }

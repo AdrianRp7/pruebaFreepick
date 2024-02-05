@@ -20,7 +20,6 @@ describe('Testing the component store', () => {
         const store = useStore();
         store.setBackgroundColor("red");
         expect(store.canvas.backgroundColor).toMatch("red")
-        // expect(store.canvas.value.size.width).toBe(newSize.width)
     })
 
     it('Add element text to the canvas', () => {

@@ -8,7 +8,6 @@ export abstract class Element {
     position: Position;
     scale: string;
     rotate: string;
-    // elementStyle: CSSStyleDeclaration;
 
     protected constructor(size: Size, position: Position, scale: string = "", rotate: string = "") {
         this.id = Math.random().toString(36).substr(2, 9);
@@ -17,7 +16,6 @@ export abstract class Element {
         this.position = position;
         this.scale = scale;
         this.rotate = rotate;
-        // this.elementStyle = ""
     }
 
     getDomElement() {

@@ -23,7 +23,6 @@
     const hiddenModal = ref<Boolean>(props.hidden);
 
     watch(() => props.hidden, (newValue: Boolean) => {
-        console.log(newValue)
         hiddenModal.value = newValue;
         emit('update', hiddenModal);
     })

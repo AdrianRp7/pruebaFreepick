@@ -43,10 +43,6 @@ export const useStore = defineStore('store', () => {
         canvas.value.size.width = width
     };
 
-    // const deleteActualItem = () => {
-    //     canvas.value.elements = canvas.value.elements.filter(element => element.id !== activeElement?.value?.id);
-    // }
-
     const deleteActualItem = () => {
         if(activeElement.value !== null) {
             const index: number = canvas.value.elements.map(element => element.id).indexOf(activeElement.value.id);
@@ -63,7 +59,6 @@ export const useStore = defineStore('store', () => {
             (
                 activeElement.value?.content, 
                 {width: activeElement.value?.size.width, height: activeElement.value?.size.height},
-                // {x: activeElement.value?.position.x, y: activeElement.value?.position.y},
                 {x: 100, y: 0},
                 activeElement.value?.background,
                 activeElement.value?.colorText,
