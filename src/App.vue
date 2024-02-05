@@ -34,7 +34,6 @@ function controlKeyPressed(event: KeyboardEvent) {
 }
 
 onMounted(() => {
-  
   window.addEventListener("keydown", controlKeyPressed);
 })
 

@@ -15,7 +15,8 @@
         </div>
         <div class="flex justify-center flex-wrap overflow-y-scroll h-3/4">
             <img @click="insertElement(image.preview)" class="basis-1/4 p-2 w-1/4 " :src="image.preview" alt="" v-for="image in results" v-bind:key="image.id">
-            <InfiniteLoading @infinite="getImages" v-if="results.length !== 0"/>
+            <br>
+            <InfiniteLoading @infinite="getImages" v-if="results.length !== 0 && nextLink !== null"/>
             <div class="w-100 flex items-center" v-if="showLoader">
                 <Loader></Loader>
             </div>
@@ -42,7 +43,7 @@ const activePopup = ref<Boolean>(true);
 const term = ref<String>("");
 
 
-const nextLink = ref<String>("");
+const nextLink = ref<String | null>(null);
 const results = ref<ImageFetch[]>([]);
 const metaFecth = ref({});
 
@@ -50,12 +51,12 @@ function resetAndGetImages() {
     showLoader.value = true;
     results.value = [];
     metaFecth.value = {};
+    nextLink.value = null;
     getImages();
 }
 
 function getImages() {
-    const link :string = nextLink.value?.length !== 0 ?  nextLink.value : `https://wepik.com/api/images/freepik?query=${term.value}`;
-    console.log(link)
+    const link :string = nextLink.value !== null ?  nextLink.value : `https://wepik.com/api/images/freepik?query=${term.value}`;
     fetch(link)
         .then((response) => {
             if (!response.ok) {
@@ -67,7 +68,7 @@ function getImages() {
             showLoader.value = false;
             // Hacer algo con los datos obtenidos
             results.value = results.value.concat(data.data);
-            nextLink.value = data.link;
+            nextLink.value = data.links.next;
             metaFecth.value = data.meta;
         })
         .catch((error) => {
@@ -91,9 +92,22 @@ watch(term, (newValue) => {
 </script>
 
 <style scoped>
-    img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
+
+img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    max-height: 300px;
+}
+
+:deep(.spinner) {
+    box-sizing: initial;
+    border: 6px solid var(--tw-ring-color);
+    border-right-color: transparent;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border-color: var(--tw-ring-color) transparent var(--tw-ring-color) transparent;
+}
+
 </style>
